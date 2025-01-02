@@ -23,3 +23,9 @@
 	1. 쿠키사용하기 (쿠키정보설정, 쿠키정보읽기, 쿠키를 사용한 팝업창)
 	2. JSP와 MySql 연동하기 (JDBC 드라이버 추가, JDBC 연결 테스트)
 	3. JDBC 사용방법 3가지 (DB접속 JSP 파일 호출, DB접속용 Class 파일 사용, web.xml 파일 사용)
+5. 5일차 수업 (jsp_20250102)
+	1. 커넥션 풀 사용하기 (server.xml을 사용한 방식, context.xml 만 사용한 방식)
+	2. Statement로 데이터 추가, 수정, 삭제하기
+	3. Statement로 데이터 조회하기
+	4. PreparedStatement로 데이터 추가하기
+	5. PreparedStatement로 데이터 조회하기 (설명은 내일)

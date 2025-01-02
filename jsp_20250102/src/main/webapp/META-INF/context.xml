@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context path="/">
+<!--  커넥션풀 : tomcat서버 안에서 미리 데이터베이스 지정한 수대로 접속해 놓고, 실제 어플리케이션에서 데이터베이스 접속 요청이 들어오면 미리 접속해놓은 풀을 넘겨줘서 빠르게 데이터베이스 접속을 할 수 있도록 하는 기술 -->
+
+<!-- 기본 설정 방법 -->
+<!--  tomcat서버의 server.xml 파일의 GlobalNamingResources 태그에 설정 내용을 입력하여 사용함 -->
+<!--  context.xml 을 통해서 server.xml에 입력한 내용을 대신 불러오고, context.xml의 내용을 자바 파일에서 다시 불러와서 사용함 -->
+
+<!--  context.xml 파일에서 server.xml의 내용을 가져오기 위해서 ResourceLink 태그를 사용 -->
+
+<!--  global : server.xml 파일의 커넥션풀 설정 이름을 입력 -->
+<!--  name : 자바 파일에서 찾을 수 있도록 자신의 설정 이름을 설정-->
+  <ResourceLink
+      name="context_dbcp_mysql"
+      global="global_dbcp_mysql"
+      type="javax.sql.DataSource"
+  />
+
+<!--  context.xml 파일에 직접 커넥션 풀의 설정 내용을 입력하여 사용해도 상관없음 -->
+<!--  context.xml 파일에 직접 커넥션 풀 설정을 할 경우 server.xml의 내용을 그대로 입력 -->
+
+<!--  auth : 커넥션 풀을 관리할 관리자 선택 (Container, Application) -->
+<!--  initialSize : 커넥션 풀의 최초 초기화 과정에서 미리 만들어 놓을 연결의 수 설정 -->
+<!--  minIdle : 최소한을 유지할 연결 수 설정 (기본값 0) -->
+<!--  maxIdle : 풀을 반납할 때 최대로 유지할 수 있는 연결 수 설정 (기본값 8) -->
+<!--  maxTotal : 동시에 연결할 수 있는 최대 연결 수 설정 (기본값 8) -->
+<!--  maxWaitMillis : 새로운 요청이 들어왔을 경우 최대 대기 시간 설정 -->
+<!--  type : 데이터소스로 사용할 클래스명 -->
+<!--  driverClassName : JDBC 드라이버 클래스명 -->
+<!--  url : 데이터베이스 접속 주소 -->
+<!--  username : 데이터베이스 사용자 ID -->
+<!--  password : 데이터베이스 사용자 비밀번호 -->
+  <Resource
+      name="dbcp_mysql"
+      auth="Container"
+      initialSize="0"
+      minIdle="5"
+      maxIdle="20"
+      maxTotal="20"
+      maxWaitMillis="5000"
+      type="javax.sql.DataSource"
+      driverClassName="com.mysql.cj.jdbc.Driver"
+      url="jdbc:mysql://localhost:3306/testfull503db?characterEncoding=UTF-8&amp;serverTimezone=UTC"
+      username="test1"
+      password="full503"
+  />
+
+</Context>
