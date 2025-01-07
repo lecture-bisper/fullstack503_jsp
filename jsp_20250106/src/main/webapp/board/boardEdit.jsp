@@ -7,6 +7,27 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 
+<%-- 1. 클라이언트에서 전달받은 글번호 가져오기 --%>
+<%-- 2. DAO 를 사용하여 데이터베이스 연결 --%>
+<%-- 3. DAO에서 제공하는 메소드를 사용하여 현재 글번호에 맞는 데이터 가져오기 --%>
+<%-- 4. 데이터베이스 접속 종료 --%>
+<%-- 5. HTML에 데이터 출력 --%>
+<%-- 6. 데이터 수정 후 submit 버튼 클릭 시 서버로 데이터 전송 --%>
+
+<%@ page import="bitc.fullstack503.jsp_20250106.database.JspBoardDTO" %>
+<%@ page import="bitc.fullstack503.jsp_20250106.database.JspBoardDAO" %>
+
+<%
+  int boardIdx = Integer.parseInt(request.getParameter("boardIdx"));
+
+  JspBoardDAO dao = new JspBoardDAO();
+  dao.dbOpen();
+
+  JspBoardDTO board = dao.selectBoardDetail(boardIdx);
+
+  dao.dbClose();
+%>
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -49,19 +70,19 @@
       <div class="col-sm">
         <div class="input-group">
           <span class="input-group-text">글번호</span>
-          <input type="number" class="form-control" id="board-idx" name="boardIdx" value="100" readonly>
+          <input type="number" class="form-control" id="board-idx" name="boardIdx" value="<%=board.getBoardIdx()%>" readonly>
         </div>
       </div>
       <div class="col-sm-8">
         <div class="input-group">
           <span class="input-group-text">글제목</span>
-          <input type="text" class="form-control" id="title" name="title" value="테스트 제목1">
+          <input type="text" class="form-control" id="title" name="title" value="<%=board.getBoardTitle()%>" placeholder="게시글의 제목을 입력해주세요.">
         </div>
       </div>
       <div class="col-sm">
         <div class="input-group">
           <span class="input-group-text">조회수</span>
-          <input type="number" class="form-control" id="count" name="count" value="10" readonly>
+          <input type="number" class="form-control" id="count" name="count" value="<%=board.getBoardCount()%>" readonly>
         </div>
       </div>
     </div>
@@ -70,27 +91,27 @@
       <div class="col-sm">
         <div class="input-group">
           <span class="input-group-text">글쓴이</span>
-          <input type="text" class="form-control" id="create-id" name="createId" value="test1" readonly>
+          <input type="text" class="form-control" id="create-id" name="createId" value="<%=board.getBoardCreateId()%>" readonly>
         </div>
       </div>
       <div class="col-sm-4">
         <div class="input-group">
           <span class="input-group-text">등록일</span>
           <input type="datetime-local" class="form-control" id="create-date" name="createDate"
-                 value="2025-01-06 11:29:00" readonly>
+                 value="<%=board.getBoardCreateDate()%>" readonly>
         </div>
       </div>
       <div class="col-sm-4">
         <div class="input-group">
           <span class="input-group-text">수정일</span>
           <input type="datetime-local" class="form-control" id="update-date" name="updateDate"
-                 value="2025-01-06 11:30:00">
+                 value="<%=board.getBoardUpdateDate()%>">
         </div>
       </div>
       <div class="col-sm">
         <div class="input-group">
           <span class="input-group-text">추천수</span>
-          <input type="number" class="form-control" id="like" name="like" value="10" readonly>
+          <input type="number" class="form-control" id="like" name="like" value="<%=board.getBoardLike()%>" readonly>
         </div>
       </div>
     </div>
@@ -99,7 +120,7 @@
       <div class="col-sm">
         <div class="input-group">
           <span class="input-group-text">글내용</span>
-          <textarea class="form-control" name="content" id="content" rows="10"></textarea>
+          <textarea class="form-control" name="content" id="content" rows="10" placeholder="게시글의 내용을 입력해주세요"><%=board.getBoardContent()%></textarea>
         </div>
       </div>
     </div>
