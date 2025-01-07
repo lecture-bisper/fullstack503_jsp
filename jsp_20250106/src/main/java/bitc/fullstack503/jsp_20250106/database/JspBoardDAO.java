@@ -123,10 +123,67 @@ public class JspBoardDAO extends DBConnect {
   }
   
 //  게시글 수정
+  public int updateBoard(int boardIdx, String title, String content) {
+
+    int result = 0;
+
+    try {
+      String sql = "UPDATE jspboard ";
+      sql += "SET board_title = ?, board_content = ?, board_update_date = now() ";
+      sql += "WHERE board_idx = ? ";
+
+      pstmt = conn.prepareStatement(sql);
+      pstmt.setString(1, title);
+      pstmt.setString(2, content);
+      pstmt.setInt(3, boardIdx);
+
+      result = pstmt.executeUpdate();
+    }
+    catch (SQLException e) {
+      System.out.println("데이터 수정 중 오류가 발생했습니다.");
+      System.out.println("SQLException : " + e.getMessage());
+    }
+
+    return result;
+  }
   
 //  게시글 삭제
+  public int deleteBoard(int boardIdx) {
+
+    int result = 0;
+
+    try {
+      String sql = "UPDATE jspboard SET delete_yn = 'Y' WHERE board_idx = ? ";
+
+      pstmt = conn.prepareStatement(sql);
+      pstmt.setInt(1, boardIdx);
+
+      result = pstmt.executeUpdate();
+    }
+    catch (SQLException e) {
+      System.out.println("데이터 삭제 중 오류가 발생했습니다.");
+      System.out.println("SQLException : " + e.getMessage());
+    }
+
+    return result;
+  }
   
 //  조회수 업데이트
+  public void updateBoardCount(int boardIdx) {
+
+    try {
+      String sql = "UPDATE jspboard SET board_count = board_count + 1 WHERE board_idx = ? ";
+
+      pstmt = conn.prepareStatement(sql);
+      pstmt.setInt(1, boardIdx);
+
+      pstmt.executeUpdate();
+    }
+    catch (SQLException e) {
+      System.out.println("데이터 수정 중 오류가 발생했습니다.");
+      System.out.println("SQLException : " + e.getMessage());
+    }
+  }
   
 //  추천수 업데이트
 }

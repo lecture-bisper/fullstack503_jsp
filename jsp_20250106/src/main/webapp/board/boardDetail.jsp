@@ -22,6 +22,10 @@
   JspBoardDAO dao = new JspBoardDAO();
   dao.dbOpen();
 
+//  조회수 업데이트 (dao에서 제공하는 메소드로 조회수 업데이트)
+  dao.updateBoardCount(boardIdx);
+
+//  게시글 조회하기
   JspBoardDTO board = dao.selectBoardDetail(boardIdx);
 
   dao.dbClose();
@@ -48,11 +52,21 @@
       });
 
       $("#btn-edit").on("click", function() {
-        location.href = "./boardEdit.jsp";
+        var confirmed = confirm("수정하시겠습니까");
+        var boardIdx = $("#board-idx").val();
+
+        if (confirmed) {
+          location.href = "./boardEdit.jsp?boardIdx=" + boardIdx;
+        }
       });
 
       $("#btn-remove").on("click", function() {
-        location.href = "./deleteProcess.jsp";
+        var confirmed = confirm("삭제하시겠습니까?");
+        var boardIdx = $("#board-idx").val();
+
+        if (confirmed == true) {
+          location.href = "./deleteProcess.jsp?boardIdx=" + boardIdx;
+        }
       });
     });
   </script>

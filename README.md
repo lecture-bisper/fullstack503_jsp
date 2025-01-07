@@ -40,3 +40,10 @@
 	2. JSP 게시물 목록 페이지
 	3. JSP 게시물 쓰기 페이지
 	4. JSP 게시물 상세 페이지
+8. 8일차 수업 (jsp_20250107)
+	1. JSP 게시물 삭제
+	2. JSP 게시물 수정 페이지
+	3. JSP 게시물 조회수 업데이트
+	4. 액션태그 (include, forward)
+	5. 액션태그 (useBean, getProperty, setProperty)
+	6. 액션태그 (param)
