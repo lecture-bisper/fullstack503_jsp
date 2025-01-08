@@ -41,9 +41,15 @@
 	3. JSP 게시물 쓰기 페이지
 	4. JSP 게시물 상세 페이지
 8. 8일차 수업 (jsp_20250107)
-	1. JSP 게시물 삭제
+	1. JSP 게시물 삭제, 조회수 업데이트
 	2. JSP 게시물 수정 페이지
-	3. JSP 게시물 조회수 업데이트
-	4. 액션태그 (include, forward)
-	5. 액션태그 (useBean, getProperty, setProperty)
-	6. 액션태그 (param)
+	3. 액션태그 (include, forward)
+	4. 액션태그 (useBean, getProperty, setProperty)
+	5. 액션태그 (param
+9. 9일차 수업 (jspMemberBoard)
+	1. JSP 회원제 게시판 DB 설계
+	2. JSP 회원제 게시판 (JSFunction)
+	3. JSP 회원제 게시판 (JDBConnect, JSPBoardDTO, JSPBoardDAO, JSPMemberDTO, JSPMemberDAO)
+	4. JSP 회원제 게시판 process 파일 생성 (EditProcess, DeleteProcess, WriteProcess, LoginProcess, MemberJoinProcess, LogoutProcess)
+	5. JSP 회원제 게시판 layout 파일 생성 (Header, Footer, Menu)
+	6. JSP 회원제 게시판 View 파일 생성(List, View, Edit, Write, Login, MemberJoin), List 페이지 목록 출력
