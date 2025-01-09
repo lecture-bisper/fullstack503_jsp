@@ -53,3 +53,10 @@
 	4. JSP 회원제 게시판 process 파일 생성 (EditProcess, DeleteProcess, WriteProcess, LoginProcess, MemberJoinProcess, LogoutProcess)
 	5. JSP 회원제 게시판 layout 파일 생성 (Header, Footer, Menu)
 	6. JSP 회원제 게시판 View 파일 생성(List, View, Edit, Write, Login, MemberJoin), List 페이지 목록 출력
+10. 10일차 수업 (jspMemberBoard)
+	1. JSP 회원제 게시판 View 파일 내용 완성 (Edit, View)
+	2. JSP 회원제 게시판 process 파일 완성 (EditProcess, DeleteProcess, WriteProcess, LoginProcess, MemberJoinProcess, LogoutProcess)
+	3. JSP 회원제 게시판 로그인 체크 파일 생성 및 적용(LoginCheck)
+	4. JSP 회원제 게시판 각 페이지마다 Header 에 다른 이름이 나오도록 수정, layout 파일 include 설정
+	5. JSP 회원제 게시판 주석 추가
+	

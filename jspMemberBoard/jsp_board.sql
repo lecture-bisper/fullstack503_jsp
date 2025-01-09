@@ -10,7 +10,7 @@ VALUES ('테스트 제목8', '테스트 내용 8', 'test8', now());
 
 -- 게시물 상세 보기
 SELECT board_idx, board_title, board_content, board_create_id, board_create_date, board_update_date, board_count, board_like
-FROM jspboard WHERE board_idx = 7 AND deleted_yn = 'N';
+FROM jspboard WHERE board_idx = 9 AND deleted_yn = 'N';
 
 -- 게시물 수정
 UPDATE jspboard SET board_title = '수정된 제목 7', board_content = '수정된 내용 7', board_update_date = now() WHERE board_idx = 7 AND deleted_yn = 'N';
