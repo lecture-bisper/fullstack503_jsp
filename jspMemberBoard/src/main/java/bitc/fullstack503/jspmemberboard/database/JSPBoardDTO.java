@@ -1,5 +1,6 @@
 package bitc.fullstack503.jspmemberboard.database;
 
+// jspboard 테이블의 데이터를 자바에서 사용하기 위해 선언한 클래스
 public class JSPBoardDTO {
 
   private int boardIdx;

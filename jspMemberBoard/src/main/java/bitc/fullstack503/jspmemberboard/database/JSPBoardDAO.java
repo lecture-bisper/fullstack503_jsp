@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+// jspboard 테이블의 조작하기 위한 클래스
 public class JSPBoardDAO extends JDBConnect {
 
   public JSPBoardDAO() {

@@ -5,6 +5,7 @@ import jakarta.servlet.ServletContext;
 
 import java.sql.*;
 
+// JDBC를 사용하기 위한 부모 클래스 선언, 각종 DAO의 부모 클래스가 됨
 public class JDBConnect {
 
   private String dbDriver;

@@ -9,6 +9,7 @@ public class JSPMemberDTO {
   private String userPhone;
   private String userAddress;
 
+//  jspmember 테이블의 데이터를 자바에서 사용하기 위해 선언한 클래스
   public JSPMemberDTO() {}
 
   public JSPMemberDTO(String userId, String userPw, String userName, String userEmail, String userPhone, String userAddress) {

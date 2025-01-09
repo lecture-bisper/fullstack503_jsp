@@ -4,6 +4,7 @@ import jakarta.servlet.ServletContext;
 
 import java.sql.SQLException;
 
+// jspmember 테이블의 데이터를 조작하기 위한 클래스
 public class JSPMemberDAO extends JDBConnect {
 
   public JSPMemberDAO() {
