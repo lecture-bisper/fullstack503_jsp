@@ -24,17 +24,61 @@
   <script>
     $(document).ready(function () {
       $("#btn-join").on("click", function () {
+        // id 속성값으로 'frm' 을 사용하는 form 태그를 검색하여 가져옴
         var frm = $("#frm")[0];
+
+        // trim() : 자바스크립트에서 제공하는 함수로 지정한 문자열의 앞쪽, 뒤쪽에 모든 공백 기호를 제거함
+        // val() : jQuery 에서 제공하는 함수로 지정한 input 태그의 value 속성값을 가져옴
+
+        // 회원 가입에 필수 정보란의 데이터를 가져와서 공백기호 제거
+        var id = $("#user-id").val().trim();
         var pw1 = $("#user-pw1").val().trim();
         var pw2 = $("#user-pw2").val().trim();
+        var name = $("#user-name").val().trim();
+        var email = $("#user-email").val().trim();
 
-        if (pw1 != pw2) {
-          alert("비밀번호가 일치하지 않습니다.");
+        // 빈값을 입력한 부분이 없는지 확인하기 위한 변수
+        var idFlag = false;
+        var pwFlag = false;
+        var nameFlag = false;
+        var emailFlag = false;
 
-          $("#user-pw2").focus();
+        // id가 비었는지 확인
+        if (id != "") {
+          idFlag = true;
+        }
+
+        // 비밀번호가 비었는지 확인
+        if (pw1 != "") {
+          // 첫번째 비밀번호와 두번째 비밀번호가 일치하는지 확인
+          if (pw1 != pw2) {
+            alert("비밀번호가 일치하지 않습니다.");
+            // 일치하지 않을 경우 두번째 비밀번호 입력한으로 포커스를 이동
+            $("#user-pw2").focus();
+            // 현재 함수를 즉시 종료, 비밀번호가 일치하지 않기 때문에 데이터 전송이 발생하지 않으므로 아래의 작업을 진행할 필요가 없으므로 즉시 함수를 종료
+            return;
+          }
+          else {
+            pwFlag = true;
+          }
+        }
+
+        // 이름이 비었는지 확인
+        if (name != "") {
+          nameFlag = true;
+        }
+
+        // 이메일이 비었는지 확인
+        if (email != "") {
+          emailFlag = true;
+        }
+
+        // 모든 항목이 모두 true 일 경우에만 submit 이벤트 발생
+        if (idFlag && pwFlag && nameFlag && emailFlag) {
+          frm.submit();
         }
         else {
-          frm.submit();
+          alert("필수 입력 부분이 비어있습니다.");
         }
       });
 
