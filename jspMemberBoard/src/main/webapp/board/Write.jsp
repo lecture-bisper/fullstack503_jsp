@@ -7,6 +7,9 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 
+<%-- 로그인 체크 --%>
+<jsp:include page="./login/LoginCheck.jsp"></jsp:include>
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -44,10 +47,6 @@
           <div class="mt-3">
             <label for="title" class="form-label">제목 :</label>
             <input type="text" class="form-control" id="title" name="title" placeholder="제목을 입력하세요">
-          </div>
-          <div class="mt-3">
-            <label for="user-id" class="form-label">아이디 :</label>
-            <input type="text" class="form-control" id="user-id" name="userId" placeholder="아이디를 입력하세요">
           </div>
           <div class="mt-3">
             <label for="content" class="form-label">내용 :</label>

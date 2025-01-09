@@ -22,7 +22,20 @@
       </li>
     </ul>
     <div class="ms-auto">
-      <a href="./login/Login.jsp" class="btn btn-outline-success">로그인</a>
+    <%
+//      세션 정보를 확인하여 로그인 여부 확인
+//      세션 정보가 없으면 로그인 버튼 출력
+      if (session.getAttribute("userId") == null) {
+        out.println("<a href='/board/login/Login.jsp' class='btn btn-outline-info'>로그인</a>");
+      }
+      else {
+    %>
+<%--    세션 정보가 있으면 사용자 이름 출력 및 로그아웃 버튼 출력 --%>
+        <span class="navbar-text text-light me-3"><%=session.getAttribute("userName")%> 님 반갑습니다.</span>
+        <a href="/board/login/LogoutProcess.jsp" class="btn btn-outline-secondary">로그아웃</a>
+    <%
+      }
+    %>
     </div>
   </div>
 </nav>
