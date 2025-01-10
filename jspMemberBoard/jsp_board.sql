@@ -4,9 +4,26 @@ SELECT * FROM testfull503db.jspboard;
 SELECT board_idx, board_title, board_create_id, board_create_date,  board_count, board_like
 FROM jspboard WHERE deleted_yn = 'N' ORDER BY board_idx DESC;
 
+-- 게시물 목록 보기 (내림차순, 페이징 기법)
+SELECT board_idx, board_title, board_create_id, board_create_date,  board_count, board_like
+FROM jspboard WHERE deleted_yn = 'N' ORDER BY board_idx DESC
+LIMIT 10 OFFSET 5;
+
+-- 게시물 전체 수
+SELECT count(*) AS cnt FROM jspboard;
+
 -- 게시물 등록
 INSERT INTO jspboard (board_title, board_content, board_create_id, board_create_date)
-VALUES ('테스트 제목8', '테스트 내용 8', 'test8', now());
+VALUES ('테스트 제목4', '테스트 내용 4', 'test4', now());
+
+INSERT INTO jspboard (board_title, board_content, board_create_id, board_create_date)
+VALUES 
+('테스트 제목31', '테스트 내용 31', 'test1', now()),
+('테스트 제목32', '테스트 내용 32', 'test1', now()),
+('테스트 제목33', '테스트 내용 33', 'test1', now()),
+('테스트 제목34', '테스트 내용 34', 'test1', now()),
+('테스트 제목35', '테스트 내용 35', 'test1', now()),
+('테스트 제목36', '테스트 내용 36', 'test1', now());
 
 -- 게시물 상세 보기
 SELECT board_idx, board_title, board_content, board_create_id, board_create_date, board_update_date, board_count, board_like

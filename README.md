@@ -59,4 +59,7 @@
 	3. JSP 회원제 게시판 로그인 체크 파일 생성 및 적용(LoginCheck)
 	4. JSP 회원제 게시판 각 페이지마다 Header 에 다른 이름이 나오도록 수정, layout 파일 include 설정
 	5. JSP 회원제 게시판 주석 추가
+11. 11일차 수업 (jspMemberBoard)
+	1. JSP 회원제 게시판 페이징 기능 추가
+	2. JSP 회원제 게시판 ajax를 통한 추천수 증가 기능 추가
 	
