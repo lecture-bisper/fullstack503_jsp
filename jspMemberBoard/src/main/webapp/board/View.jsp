@@ -80,6 +80,70 @@
           frm.submit();
         }
       });
+
+      // 추천 버튼
+      // ajax를 사용하여 자바스크립트가 직접 서버와 데이터 통신
+      $("#btn-like").on("click", function() {
+        var boardIdx = $("#board-idx").val();
+
+        // ajax : 자바스크립트의 비동기 통신 기술
+        // 웹에서 클라이언트가 서버와 통신(데이터 주고 받기)을 하는 방법은 form 태그를 사용하여 데이터를 서버로 전달
+        // 자바스크립트의 ajax 를 사용하게 되면 자바스크립트가 직접 서버와 통신을 진행함
+        // form 태그를 사용하여 서버와 데이터 통신을 하면 같은 페이지를 출력하더라도 화면을 새로 그려야 함
+        // 자바스크립트는 html을 실시간으로 조작할 수 있으므로 필요한 부분만 수정하는 것이 가능함
+        // 자바스크립트의 ajax 를 사용하게 되면 서버와 통신 후 전달받은 데이터를 화면에 출력할 때 전체화면을 다시 그릴 필요없이 수정될 부분만 새로 그리면 됨
+        // ajax 통신 시 주로 json 방식으로 데이터를 전달받음
+
+        // json : JavaScript Object Notation 의 줄임말
+        // 자바스크립트의 object 타입을 흉내낸 데이터 타입
+        // 현재는 데이터 통신 시 주로 사용하는 방식
+
+        // 자바에서 json을 사용하려면 추가 라이브러리(Gson)가 필요함
+
+        // jquery의 ajax 함수 설명
+        // url : 서버로 요청할 주소
+        // type : 서버로 데이터 전송 시 통신 방법(GET, POST)
+        // data : 서버로 전달할 데이터, javascript의 object 타입으로 설정, JSP에서 getParameter()로 가져옴
+        //    서버로 전달할 데이터가 없을 경우 생략 가능
+        // dataType : 서버에서 클라이언트로 데이터 전달 시 사용할 데이터 타입(text,html,json)
+        //    생략할 경우 자바스크립트가 자동으로 추정
+        //    text 는 서버에서 전달하는 데이터가 문자열일 경우 사용
+        //    html 은 서버에서 전달하는 데이터가 html 문서일 경우
+        //    json 은 가장 많이 사용하는 방식, 자바스크립트의 object 타입을 흉내낸 데이터 타입일 경우
+        //      자바에서는 HashMap과 비슷함
+        // success : 서버와 정상적으로 통신이 성공했을 경우 자동 실행되는 콜백함수
+        // error : 서버와 통신이 실패했을 경우 자동 실행되는 콜백함수
+
+        // async : 서버와 통신을 동기화 방식으로 진행, true/false
+        // timeout : 서버와 통신 시 요청 제한 시간, 1/1000 초로 입력
+        // beforeSend : 서버와 통신을 진행하기 직전에 먼저 실행하는 콜백함수
+        // complete : 서버와 통신 후 success, error 콜백함수 실행 이후에 자동 실행되는 콜백함수
+
+        $.ajax({
+          url: "./AjaxLikeProcess.jsp",
+          type: "POST",
+          data: {boardIdx: boardIdx},
+          dataType: "text",
+          // 서버와 통신 성공 시 데이터만 가져옴
+          success: function(data) {
+            // 서버에서 받아온 json 문자열의 앞뒤 공백을 제거
+            var resData = data.trim();
+            // 자바스크립트에서 제공하는 JSON 관련 함수를 사용하여 json 문자열을 자바스크립트 object 타입으로 변환
+            var resDataObj = JSON.parse(resData);
+
+            if (resDataObj.result == "success") {
+              alert("추천하였습니다.");
+              $("#board-like-count").val(resDataObj.data);
+            }
+            else {
+              alert("추천에 실패하였습니다.");
+            }
+          },
+          error: function() {
+            alert("통신 중 오류가 발생했습니다.");
+          }
+        });
+      });
     });
   </script>
 
@@ -151,6 +215,7 @@
       <div class="row mt-3">
         <div class="col-sm">
           <button type="button" class="btn btn-outline-secondary" id="btn-list">목록</button>
+          <button type="button" class="btn btn-outline-info" id="btn-like">추천</button>
         </div>
         <div class="col-sm d-flex justify-content-end">
           <button type="button" class="btn btn-danger" id="btn-delete">삭제</button>
