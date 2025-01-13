@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context path="/">
+  <Resources>
+    <PostResources base="C:/uploads" className="org.apache.catalina.webresources.DirResourceSet" webAppMount="/uploads" />
+  </Resources>
+</Context>

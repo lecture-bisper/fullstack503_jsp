@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
+         version="6.0">
+  <multipart-config>
+    <location>C:\\fileUpload</location>
+    <max-file-size>20971520</max-file-size>
+    <max-request-size>41943040</max-request-size>
+    <file-size-threshold>209711520</file-size-threshold>
+  </multipart-config>
+</web-app>
